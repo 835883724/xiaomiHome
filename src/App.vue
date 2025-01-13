@@ -16,13 +16,15 @@ const zoom = ref(null)
 </script>
 
 <style lang="scss">
-//小米的自适应不知道咋做的
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  width: 100% !important;
+  height: 100% !important;
+
   @media only screen and (max-width: 500px) {
     background-color: green;
   }
@@ -31,11 +33,6 @@ const zoom = ref(null)
   }
   @media only screen and (min-width: 1001px) and (max-width: 5000px) {
     background-color: blue;
-
-    // body {
-    //   width: 1060 !important;
-    //   height: 800 !important;
-    // }
   }
 }
 </style>

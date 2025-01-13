@@ -1,25 +1,73 @@
+/* 初始化样式
+------------------------------- */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none !important;
+}
 
+:root {
+	--primary-color:#2C73FF;
+	--el-color-primary: #2C73FF;
+	--next-color-white: #ffffff;
+	--next-bg-main-color: #f8f8f8;
+	--next-bg-color: #f5f5ff;
+	--next-border-color-light: #f1f2f3;
+	--next-color-primary-lighter: #ecf5ff;
+	--next-color-success-lighter: #f0f9eb;
+	--next-color-warning-lighter: #fdf6ec;
+	--next-color-danger-lighter: #fef0f0;
+	--next-color-dark-hover: #0000001a;
+	--next-color-menu-hover: rgba(0, 0, 0, 0.2);
+	--next-color-user-hover: rgba(0, 0, 0, 0.04);
+	--next-color-seting-main: #e9eef3;
+	--next-color-seting-aside: #d3dce6;
+	--next-color-seting-header: #b3c0d1;
+	--el-border-radius-small: 8px;
+	--el-input-bg-color: #fff !important;
+}
+
+html,
+body,
+#app {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: transparent;
+	background-color: var(--next-bg-main-color);
+	font-size: 14px;
+	// overflow: hidden;
+	position: relative;
+}
+
+
+/* cursor 鼠标形状
+------------------------------- */
+// 默认
+.cursor-default {
+	cursor: default !important;
+}
+// 帮助
+.cursor-help {
+	cursor: help !important;
+}
+// 手指
+.cursor-pointer {
+	cursor: pointer !important;
+}
 .curp {
-  cursor: pointer;
+	cursor: pointer !important;
+}
+// 移动
+.cursor-move {
+	cursor: move !important;
 }
 
-// flex
-.flex {
-	display: flex;
-}
-.flexEvenly {
-	display: flex;
-  justify-content: space-evenly;
-}
-.flexAround {
-	display: flex;
-  justify-content: space-around;
-}
-.flexCenter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 /* 宽高 100%
 ------------------------------- */
 .w100 {
@@ -38,7 +86,23 @@
 	min-height: 100vh !important;
 }
 
-
+/* 颜色值
+------------------------------- */
+.color-primary {
+	color: var(--el-color-primary);
+}
+.color-success {
+	color: var(--el-color-success);
+}
+.color-warning {
+	color: var(--el-color-warning);
+}
+.color-danger {
+	color: var(--el-color-danger);
+}
+.color-info {
+	color: var(--el-color-info);
+}
 
 /* 字体大小全局样式
 ------------------------------- */
@@ -50,7 +114,7 @@
 
 /* 外边距、内边距全局样式
 ------------------------------- */
-@for $i from 1 through 40 {
+@for $i from 1 through 35 {
 	.mt#{$i} {
 		margin-top: #{$i}px !important;
 	}
@@ -75,4 +139,69 @@
 	.pl#{$i} {
 		padding-left: #{$i}px !important;
 	}
+	.pd#{$i} {
+		padding: #{$i}px !important;
+	}
+}
+.myCard {
+	padding: 20px;
+	box-shadow: var(--el-box-shadow-light);
+	background-color: rgba($color: #ffffff, $alpha: 0.5);
+	border: 1px solid rgba($color: #ffffff, $alpha: 0.8);
+	border-radius: 8px;
+}
+
+.cursorP{
+	cursor: pointer;
+}
+// table的盒子的样式
+.tableCardCls {
+	background: rgba(255,255,255,0.8);
+	border-radius: 4px 4px 4px 4px;
+	opacity: 1;
+	border: 2px solid #FFFFFF;
+}
+
+.customDialog{
+	
+	.el-dialog__header {
+		background-color:#F3F6FB;
+		padding-bottom: 16px;
+	}
+}
+
+.customDrawer{
+	.el-drawer__header {
+		background-color:#F3F6FB;
+		padding-bottom: 16px;
+	}
+}
+
+.customFooter{
+	display: flex;
+	justify-content: center;
+	 border-top: 1px solid #E9EDF4; 
+	 padding: 16px 0px;
+}
+
+//适用于drawer以及dialog中的label样式
+.commonLabel{
+	font-size:14px;
+	color:#151E32;
+	font-weight: 600;
+}
+
+// 浅红色按钮
+.lightRedBtn {
+	background-color: #f66f6f;
+	border: 0px;
+	color: #fff;
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+.customHeader>th{
+    background-color: #f1f4fb!important;
+    color: #000;
 }

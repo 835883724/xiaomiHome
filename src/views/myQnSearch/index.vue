@@ -1,38 +1,40 @@
 
 <template>
-  <div class="container" :class=" state.inputFlag ? 'contanierShadow':'' " :style="{backgroundImage:`url(${state.imgPath})` }" ref="bgContainer"></div>
-  <div class="timeBox curp">{{ state.currentTime }}</div>
-  <div class="contentBox">
-    <div class="searchBox" :class=" state.inputFlag ? 'inputActived':''">
-      <el-icon :size="20" class="ml20 iconCls" :class="state.iconShow? 'iconShow':''" @click="state.showDialog=true">
-        <PictureFilled />
-      </el-icon>
-      <input type="text" class="inputCls" :placeholder=" state.inputFlag ?'':'搜索'" @click="changeFlag(e)" v-model="state.inputValue" @keyup.enter="toBaiDu">
-      <el-icon :size="20" class="mr20 iconCls" :class="state.iconShow? 'iconShow':''" @click="toBaiDu">
-        <Search />
-      </el-icon>
+  <div class="container" ref="bgContainer">
+    <div class="imgcontainer" :class=" state.inputFlag ? 'contanierShadow':'' " :style="{backgroundImage:`url(${state.imgPath})` }"></div>
+    <div class="timeBox curp">{{ state.currentTime }}</div>
+    <div class="contentBox">
+      <div class="searchBox" :class=" state.inputFlag ? 'inputActived':''">
+        <el-icon :size="28" class="ml20 iconCls" :class="state.iconShow? 'iconShow':''" @click="state.showDialog=true">
+          <PictureFilled />
+        </el-icon>
+        <input type="text" class="inputCls" :placeholder=" state.inputFlag ?'':'搜索'" @click="changeFlag(e)" v-model="state.inputValue" @keyup.enter="toBaiDu">
+        <el-icon :size="28" class="mr20 iconCls" :class="state.iconShow? 'iconShow':''" @click="toBaiDu">
+          <Search />
+        </el-icon>
+      </div>
+      <div class="searchSuggest" :class="state.inputValue.length>0&& state.showDialog==false? 'suggestChange':''">
+        <div>测试1</div>
+        <div>测试12</div>
+        <div>12321</div>
+      </div>
     </div>
-    <div class="searchSuggest" :class="state.inputValue.length>0&& state.showDialog==false? 'suggestChange':''">
-      <div>测试1</div>
-      <div>测试12</div>
-      <div>12321</div>
+    <div class="footerTop" v-if="state.inputFlag==false">
+      <div class="footerTop-item" v-for="item,index in state.kjCard" :key="index" @click="fastTo(item)" title="键盘按下快捷导航哦">
+        <div style="font-size: 35px;font-weight: bold;" :title="item.key">{{item.key}}</div>
+        <div style="width: 90%;overflow: hidden;" :title="item.content">{{item.content}}</div>
+        <el-icon class="closeIcon" @click.stop="spliceArr(index)" v-show="item.content!=='新增网站'">
+          <Close />
+        </el-icon>
+      </div>
     </div>
-  </div>
-  <div class="footerTop" v-if="state.inputFlag==false">
-    <div class="footerTop-item" v-for="item,index in state.kjCard" :key="index" @click="fastTo(item)" title="键盘按下快捷导航哦">
-      <div style="font-size: 35px;font-weight: bold;" :title="item.key">{{item.key}}</div>
-      <div style="width: 90%;overflow: hidden;" :title="item.content">{{item.content}}</div>
-      <el-icon class="closeIcon" @click.stop="spliceArr(index)" v-show="item.content!=='新增网站'">
-        <Close />
-      </el-icon>
+    <div class="footer">
+      <span class="textItem"> 闽ICP备16233322号-2 </span> |
+      <span class="textItem">闽公网安备35011123231376号</span>
     </div>
-  </div>
-  <div class="footer">
-    <span class="textItem"> 闽ICP备16233322号-2 </span> |
-    <span class="textItem">闽公网安备35011123231376号</span>
-  </div>
 
-  <dailogCmp v-model:showDialog="state.showDialog" @bgChange="chageBg"></dailogCmp>
+    <dailogCmp v-model:showDialog="state.showDialog" @bgChange="chageBg"></dailogCmp>
+  </div>
 
 </template>
 
@@ -129,18 +131,16 @@ const handleKeydown = event => {
 </script>
 
 <style lang="scss" scoped>
-html,
-body,
-#app {
-  overflow: hidden;
-}
-
 .container {
   width: 100%;
   height: 100%;
   overflow: hidden;
+}
+.imgcontainer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   object-fit: cover;
-  // background-image: url('@/assets/day1Bg.jpg');
   background-size: 100% 100%;
   transition: 0.3s;
 }
@@ -202,7 +202,7 @@ body,
 }
 .contanierShadow {
   filter: blur(10px);
-  transform: scale(1.05);
+  transform: scale(1.1);
   transition: 0.3s;
 }
 .iconCls {

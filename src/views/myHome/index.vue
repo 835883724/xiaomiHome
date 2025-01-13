@@ -7,7 +7,7 @@
     <div :class="state.mouseTop==false?'bgcColor':''" class="navBoxClass flexAround">
       <nav class="w100 navClass">
         <img src="@/assets/logo.jpeg" style="width: 40px;height: 40px;margin-left: 40px; ">
-        <div class="flexEvenly" style="flex: .8;">
+        <div class="flexEvenly" style="flex: .8;    display: flex;  justify-content: space-between;">
           <div class="menuItem" style="color: #ff6900;">小米官网</div>
           <div class="menuItem" @click="router.push('/myQnSearch')">小米搜索</div>
           <div class="menuItem" @click="router.push('/test')">大文件测试分片</div>
@@ -17,24 +17,20 @@
         <div style="color: #fff;" class="mr40">登录 | 注册</div>
       </nav>
     </div>
-    <el-carousel class="mt10" height="" autoplay>
+    <el-carousel class="mt10" autoplay type="card">
       <el-carousel-item v-for="item in state.imgList" :key="item.id">
-        <img :src="item.url " alt="" style=" width: 100%; height: auto;">
+        <img :src="item.url " alt="" style="height: 100%;">
       </el-carousel-item>
     </el-carousel>
     <div class="footBox">
       <div class="footContent">
-        <div>
-          <div>选购指南</div>
-          <div>手机</div>
-          <div>电视</div>
-          <div>笔记本</div>
+        <div v-for="it,index in state.footerList" :key="index">
+          <div class="foot-header">{{it.header}}</div>
+          <div class="foot-cont">
+            <div v-for="item,idx in it.content" :key="idx" class="curp">{{item}}</div>
+          </div>
         </div>
-        <div>
-          <div>服务中心</div>
-          <div>项目21</div>
-          <div>项目22</div>
-        </div>
+        <div style="width: 100px;">22222</div>
       </div>
     </div>
   </div>
@@ -55,6 +51,32 @@ const state = reactive({
     {
       url: 'https://img.youpin.mi-img.com/ferriswheel/bb716c99_fd18_4299_a0d8_cd417e60fdf8.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560',
       id: 2
+    },
+    {
+      url: 'https://img.youpin.mi-img.com/ferriswheel/7f34b8b0_0d61_4e84_b7fe_7c45eb52d36c.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560',
+      id: 3
+    }
+  ],
+  footerList: [
+    {
+      header: '选购指南',
+      content: ['手机', '电视', '笔记本', '电脑', '平板']
+    },
+    {
+      header: '选购指南',
+      content: ['手机', '电视', '笔记本', '电脑', '平板']
+    },
+    {
+      header: '选购指南',
+      content: ['手机', '电视', '笔记本', '电脑', '平板']
+    },
+    {
+      header: '选购指南',
+      content: ['手机', '电视', '笔记本', '电脑', '平板']
+    },
+    {
+      header: '选购指南',
+      content: ['手机', '电视', '笔记本', '电脑', '平板']
     }
   ]
 })
@@ -73,17 +95,8 @@ const carClick = () => {
 </script>
 
 <style lang="scss">
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-}
-
 .container {
   width: 100%;
-  height: 100%;
   .box {
     width: 500px;
     height: 1220px;
@@ -131,13 +144,23 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
 }
 .footBox {
   width: 100%;
   .footContent {
     margin: 0 auto;
-    width: 800px;
+    width: 100%;
     height: 400px;
+    display: flex;
+    justify-content: space-around;
+    .foot-header {
+      font-weight: bold;
+    }
+    .foot-cont {
+      font-size: 14px;
+      margin-top: 10px;
+    }
   }
 }
 </style>

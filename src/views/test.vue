@@ -1,5 +1,5 @@
 <template>
-  <div class="" style="height: 300px;color: #fff;">
+  <div class="" style="height: 300px;color: #fff;background-color: blue;">
     <div class="mb30">测试大文件分片上传</div>
     <input type="file" @change="handleChange">
   </div>
