@@ -2,14 +2,19 @@
 <template>
   <div class="container">
     <div class="topDiv curp" @click="carClick">
-      <img src="@/assets/111.jpg" alt="" style="  width: 100%; height: auto;">
+      <img :src=state.firtImg[0] alt="" style="width: 100%; ">
+      <!-- <el-carousel height="700px">
+        <el-carousel-item v-for="item in state.firtImg" :key="item" style="height: 100%;">
+          <img :src="item " alt="" style="width: 100%;">
+        </el-carousel-item>
+      </el-carousel> -->
     </div>
     <div :class="state.mouseTop==false?'bgcColor':''" class="navBoxClass flexAround">
       <nav class="w100 navClass">
         <img src="@/assets/logo.jpeg" style="width: 40px;height: 40px;margin-left: 40px; ">
         <div class="flexEvenly" style="flex: .8;    display: flex;  justify-content: space-between;">
           <div class="menuItem" style="color: #ff6900;">小米官网</div>
-          <div class="menuItem" @click="router.push('/myQnSearch')">小米搜索</div>
+          <div class="menuItem" @click="router.push('/myQnSearch')">青柠搜索项目</div>
           <div class="menuItem" @click="router.push('/test')">大文件测试分片</div>
           <div class="menuItem" @click="router.push('/myCenter')">动画demo</div>
           <div class="menuItem">小米OS</div>
@@ -27,10 +32,18 @@
         <div v-for="it,index in state.footerList" :key="index">
           <div class="foot-header">{{it.header}}</div>
           <div class="foot-cont">
-            <div v-for="item,idx in it.content" :key="idx" class="curp">{{item}}</div>
+            <div v-for="item,idx in it.content" :key="idx" class="itemList curp">{{item}}</div>
           </div>
         </div>
-        <div style="width: 100px;">22222</div>
+        <el-divider direction="vertical" style="height:100px" />
+        <div style="width: 200px;margin-top: 10px;">
+          <div style="font-size: 24px;font-weight: bold;color: #ff6900;"> 950816 </div>
+          <div class="mt8 mb8"> 8：00-18：00(仅收市话费) </div>
+          <el-button type="primary" plain>
+            <el-icon class="el-icon--right">
+              <ChatRound />
+            </el-icon>人工客服</el-button>
+        </div>
       </div>
     </div>
   </div>
@@ -43,6 +56,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const state = reactive({
   mouseTop: true,
+  firtImg: ['https://img.youpin.mi-img.com/ferriswheel/2b1aac43_8370_4641_956d_3e25a284d150.jpeg@base@tag=imgScale&F=webp&h=1180&q=90&w=2560', 'https://img.youpin.mi-img.com/ferriswheel/0ab388fd_16e0_434e_a3de_b659878c9470.jpeg@base@tag=imgScale&F=webp&h=1180&q=90&w=2560'],
   imgList: [
     {
       url: 'https://img.youpin.mi-img.com/ferriswheel/d17b2f05_740a_4ce1_be4d_a629c53ae924.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560',
@@ -63,20 +77,20 @@ const state = reactive({
       content: ['手机', '电视', '笔记本', '电脑', '平板']
     },
     {
-      header: '选购指南',
-      content: ['手机', '电视', '笔记本', '电脑', '平板']
+      header: '服务中心',
+      content: ['申请售后', '售后政策', '以旧换新', '保障服务']
     },
     {
-      header: '选购指南',
-      content: ['手机', '电视', '笔记本', '电脑', '平板']
+      header: '线下门店',
+      content: ['小米之家', '服务网点', '体验店']
     },
     {
-      header: '选购指南',
-      content: ['手机', '电视', '笔记本', '电脑', '平板']
+      header: '关于小米',
+      content: ['了解小米', '认识小米', '加入小米', '可持续发展']
     },
     {
-      header: '选购指南',
-      content: ['手机', '电视', '笔记本', '电脑', '平板']
+      header: '关注我们',
+      content: ['新浪微博', '官方微信', '微博', '电脑', '平板']
     }
   ]
 })
@@ -129,7 +143,6 @@ const carClick = () => {
 }
 .topDiv {
   width: 100%;
-  // height: 800px;
   // background-image: url('@/assets/111.jpg');
   // background-size: contain;
   // background-repeat: no-repeat;
@@ -161,6 +174,14 @@ const carClick = () => {
       font-size: 14px;
       margin-top: 10px;
     }
+  }
+}
+.itemList {
+  color: #757575;
+  font-weight: 500;
+  margin: 5px 0;
+  &:hover {
+    color: #ff6900;
   }
 }
 </style>
