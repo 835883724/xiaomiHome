@@ -38,8 +38,8 @@ const unplayLottie = () => {
   state.anim.stop() // 停止动画
 }
 onUnmounted(() => {
+  // state.anim.destroy()
   state.anim = null
-  state.anim.destroy()
 })
 </script>
 

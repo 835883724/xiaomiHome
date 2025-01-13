@@ -9,9 +9,9 @@
         <img src="@/assets/logo.jpeg" style="width: 40px;height: 40px;margin-left: 40px; ">
         <div class="flexEvenly" style="flex: .8;">
           <div class="menuItem" style="color: #ff6900;">小米官网</div>
-          <div class="menuItem" @click="router.push('/myCenter')">小米手机</div>
-          <div class="menuItem" @click="router.push('/test')">小米汽车</div>
-          <div class="menuItem">小米影像</div>
+          <div class="menuItem" @click="router.push('/myQnSearch')">小米搜索</div>
+          <div class="menuItem" @click="router.push('/test')">大文件测试分片</div>
+          <div class="menuItem" @click="router.push('/myCenter')">动画demo</div>
           <div class="menuItem">小米OS</div>
         </div>
         <div style="color: #fff;" class="mr40">登录 | 注册</div>

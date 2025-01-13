@@ -20,6 +20,11 @@ const routes = [
     path: '/test',
     name: 'test',
     component: () => import('@/views/test.vue')
+  },
+  {
+    path: '/myQnSearch',
+    name: 'myQnSearch',
+    component: () => import('@/views/myQnSearch/index.vue')
   }
 ]
 
