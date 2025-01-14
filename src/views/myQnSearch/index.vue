@@ -2,6 +2,7 @@
 <template>
   <div class="container" ref="bgContainer">
     <div class="imgcontainer" :class=" state.inputFlag ? 'contanierShadow':'' " :style="{backgroundImage:`url(${state.imgPath})` }"></div>
+    <el-button type="primary" style="position: absolute; top: 0; left: 0;" @click="router.back()">返回</el-button>
     <div class="timeBox curp">{{ state.currentTime }}</div>
     <div class="contentBox">
       <div class="searchBox" :class=" state.inputFlag ? 'inputActived':''">
@@ -40,6 +41,7 @@
 
 <script  setup>
 import { onMounted, onUnmounted, reactive, ref } from 'vue'
+import router from '@/router'
 import dayjs from 'dayjs'
 import dailogCmp from './dailogCmp.vue'
 import fristImg from '../../assets/bg6.jpeg'
