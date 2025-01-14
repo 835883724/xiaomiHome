@@ -2,12 +2,14 @@
 <template>
   <div class="container">
     <div class="topDiv curp" @click="carClick">
-      <img :src=state.firtImg[0] alt="" style="width: 100%; ">
-      <!-- <el-carousel height="700px">
-        <el-carousel-item v-for="item in state.firtImg" :key="item" style="height: 100%;">
-          <img :src="item " alt="" style="width: 100%;">
-        </el-carousel-item>
-      </el-carousel> -->
+      <!-- <img :src=state.firtImg[0] alt="" style="width: 100%; "> -->
+      <div>
+        <el-carousel :height="state.bannerHeight + 'px'" :autoplay="false">
+          <el-carousel-item v-for="item in state.firtImg" :key="item" style="height: 100%;">
+            <img :src="item " alt="" style="width: 100%;">
+          </el-carousel-item>
+        </el-carousel>
+      </div>
     </div>
     <div :class="state.mouseTop==false?'bgcColor':''" class="navBoxClass flexAround">
       <nav class="w100 navClass">
@@ -17,7 +19,7 @@
           <div class="menuItem" @click="router.push('/myQnSearch')">青柠搜索项目</div>
           <div class="menuItem" @click="router.push('/test')">大文件测试分片</div>
           <div class="menuItem" @click="router.push('/myCenter')">动画demo</div>
-          <div class="menuItem">小米OS</div>
+          <div class="menuItem">公司项目合集</div>
         </div>
         <div style="color: #fff;" class="mr40">登录 | 注册</div>
       </nav>
@@ -92,9 +94,14 @@ const state = reactive({
       header: '关注我们',
       content: ['新浪微博', '官方微信', '微博', '电脑', '平板']
     }
-  ]
+  ],
+  bannerHeight: '300'
 })
 
+onMounted(() => {
+  // console.log(document, 'document')
+  state.bannerHeight = document.documentElement.clientHeight // 设置为屏幕高度
+})
 window.addEventListener('scroll', e => {
   // console.log(document.documentElement.scrollTop, 2222)
   if (document.documentElement.scrollTop > 0) {
