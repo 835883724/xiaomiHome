@@ -51,7 +51,6 @@
   </div>
 
 </template>
-
 <script  setup>
 import { onMounted, reactive, ref, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
@@ -190,5 +189,14 @@ const carClick = () => {
   &:hover {
     color: #ff6900;
   }
+}
+</style>
+<style type="text/css">
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }
 </style>
