@@ -2,9 +2,11 @@
   <div class="" style="height: 300px;color: #fff;background-color: blue;">
     <div class="mb30">测试大文件分片上传</div>
     <input type="file" @change="handleChange">
+    <MyJSXComponent></MyJSXComponent>
   </div>
 </template>
 <script setup >
+import MyJSXComponent from '@/components/MyJSXComponent.vue'
 const handleChange = e => {
   console.log(e.target.files[0])
   const resultChunk = fenpianHandle(e.target.files[0])
